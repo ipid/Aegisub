@@ -128,8 +128,12 @@ void AudioController::SetTimingController(std::unique_ptr<AudioTimingController>
 
 void AudioController::OnTimingControllerUpdatedPrimaryRange()
 {
-	if (playback_mode == PM_PrimaryRange)
-		player->SetEndPosition(SamplesFromMilliseconds(timing_controller->GetPrimaryPlaybackRange().end()));
+	if (playback_mode == PM_PrimaryRange) {
+		if (!this->disable_set_end_position) {
+			player->SetEndPosition(SamplesFromMilliseconds(timing_controller->GetPrimaryPlaybackRange().end()));
+		}
+	}
+	this->disable_set_end_position = false;
 }
 
 void AudioController::PlayRange(const TimeRange &range)
@@ -222,4 +226,9 @@ int64_t AudioController::MillisecondsFromSamples(int64_t samples) const
 {
 	if (!provider) return 0;
 	return samples * 1000 / provider->GetSampleRate();
+}
+
+void AudioController::TemporaryDisableSetEndPosition()
+{
+	this->disable_set_end_position = true;
 }

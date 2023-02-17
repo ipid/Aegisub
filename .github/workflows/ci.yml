@@ -85,7 +85,7 @@ jobs:
       - name: Install dependencies (Windows)
         if: matrix.config.os == 'windows-latest'
         run: |
-          choco install ninja innosetup
+          choco install ninja innosetup nasm
           $url = "https://github.com/leafo/moonscript/releases/download/win32-v0.5.0/moonscript-187bac54ee5a7450013e9c38e005a0e671b76f45.zip"
           mkdir moonscript
           Invoke-WebRequest -Uri $url -OutFile ".\moonscript\moonscript.zip"
@@ -97,7 +97,7 @@ jobs:
         if: matrix.config.os == 'macos-latest'
         run: |
           brew update
-          brew install luarocks ninja
+          brew install luarocks ninja nasm pkg-config
           luarocks install luafilesystem 1.8.0
           luarocks install moonscript --dev
           brew install libass zlib ffms2 fftw hunspell
@@ -107,7 +107,7 @@ jobs:
         if: matrix.config.os == 'ubuntu-latest'
         run: |
           sudo apt-get update
-          sudo apt-get install ninja-build build-essential libx11-dev libwxgtk3.0-gtk3-dev libfreetype6-dev pkg-config libfontconfig1-dev libass-dev libasound2-dev libffms2-dev intltool libboost-all-dev
+          sudo apt-get install ninja-build build-essential libx11-dev libwxgtk3.0-gtk3-dev libfreetype6-dev pkg-config libfontconfig1-dev libass-dev libasound2-dev libffms2-dev intltool libboost-all-dev nasm
 
       - name: Configure
         run: meson build ${{ matrix.config.args }} -Dbuildtype=${{ matrix.config.buildtype }}

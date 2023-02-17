@@ -246,7 +246,9 @@ void BaseGrid::SelectRow(int row, bool addToSelected, bool select) {
 	AssDialogue *line = vis_index_line_map[row];
 
 	if (!addToSelected) {
-		context->audioController->TemporaryDisableSetEndPosition();
+		if (OPT_GET("Subtitle/Grid/Do Not Stop Audio On Click")->GetBool()) {
+			context->audioController->TemporaryDisableSetEndPosition();
+		}
 		context->selectionController->SetSelectedSet(Selection{line});
 		return;
 	}

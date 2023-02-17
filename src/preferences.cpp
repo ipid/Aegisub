@@ -226,6 +226,8 @@ void Interface(wxTreebook *book, Preferences *parent) {
 	auto grid = p->PageSizer(_("Grid"));
 	p->OptionAdd(grid, _("Focus grid on click"), "Subtitle/Grid/Focus Allow");
 	p->OptionAdd(grid, _("Highlight visible subtitles"), "Subtitle/Grid/Highlight Subtitles in Frame");
+	p->OptionAdd(grid, _("Do not stop audio on click"), "Subtitle/Grid/Do Not Stop Audio On Click");
+	p->CellSkip(grid);
 	p->OptionAdd(grid, _("Hide overrides symbol"), "Subtitle/Grid/Hide Overrides Char");
 	p->OptionFont(grid, "Subtitle/Grid/");
 

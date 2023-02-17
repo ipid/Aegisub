@@ -423,7 +423,8 @@
 			"Font Size" : 12,
 			"Hide Overrides" : 1,
 			"Hide Overrides Char" : "☀",
-			"Highlight Subtitles in Frame" : true
+			"Highlight Subtitles in Frame" : true,
+			"Do Not Stop Audio On Click" : true
 		},
 		"Highlight" : {
 			"Syntax" : true

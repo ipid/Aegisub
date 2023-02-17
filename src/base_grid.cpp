@@ -45,6 +45,7 @@
 #include "selection_controller.h"
 #include "subs_controller.h"
 #include "video_controller.h"
+#include "audio_controller.h"
 
 #include <libaegisub/make_unique.h>
 #include <libaegisub/util.h>
@@ -245,6 +246,7 @@ void BaseGrid::SelectRow(int row, bool addToSelected, bool select) {
 	AssDialogue *line = vis_index_line_map[row];
 
 	if (!addToSelected) {
+		context->audioController->TemporaryDisableSetEndPosition();
 		context->selectionController->SetSelectedSet(Selection{line});
 		return;
 	}

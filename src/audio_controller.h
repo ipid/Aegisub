@@ -122,6 +122,8 @@ class AudioController final : public wxEvtHandler {
 	/// @return Duration in milliseconds
 	int GetDuration() const;
 
+	bool disable_set_end_position = false;
+
 public:
 	AudioController(agi::Context *context);
 	~AudioController();
@@ -183,6 +185,9 @@ public:
 	/// @brief Change the current timing controller
 	/// @param new_mode The new timing controller or nullptr
 	void SetTimingController(std::unique_ptr<AudioTimingController> new_controller);
+
+	/// @brief Do not call SetEndPosition at next primary range change
+	void TemporaryDisableSetEndPosition();
 
 	DEFINE_SIGNAL_ADDERS(AnnouncePlaybackPosition,        AddPlaybackPositionListener)
 	DEFINE_SIGNAL_ADDERS(AnnouncePlaybackStop,            AddPlaybackStopListener)

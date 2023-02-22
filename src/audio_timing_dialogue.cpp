@@ -31,6 +31,7 @@
 #include "ass_file.h"
 #include "audio_marker.h"
 #include "audio_rendering_style.h"
+#include "audio_controller.h"
 #include "audio_timing.h"
 #include "command/command.h"
 #include "include/aegisub/context.h"
@@ -472,7 +473,10 @@ void AudioTimingControllerDialogue::GetRenderingStyles(AudioRenderingStyleRanges
 void AudioTimingControllerDialogue::Next(NextMode mode)
 {
 	if (mode == TIMING_UNIT)
-	{
+	{		
+		if (OPT_GET("Audio/Do Not Stop Audio When Other Line Activated")->GetBool()) {
+			context->audioController->TemporaryDisableSetEndPosition();
+		}
 		context->selectionController->NextLine();
 		return;
 	}
@@ -495,6 +499,9 @@ void AudioTimingControllerDialogue::Next(NextMode mode)
 
 void AudioTimingControllerDialogue::Prev()
 {
+	if (OPT_GET("Audio/Do Not Stop Audio When Other Line Activated")->GetBool()) {
+		context->audioController->TemporaryDisableSetEndPosition();
+	}
 	context->selectionController->PrevLine();
 }
 

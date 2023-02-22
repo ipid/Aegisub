@@ -89,7 +89,8 @@
 		"Zoom" : {
 			"Horizontal" : 0,
 			"Vertical" : 50
-		}
+		},
+		"Do Not Stop Audio When Other Line Activated" : true
 	},
 
 
@@ -423,8 +424,7 @@
 			"Font Size" : 8,
 			"Hide Overrides" : 1,
 			"Hide Overrides Char" : "☀",
-			"Highlight Subtitles in Frame" : true,
-			"Do Not Stop Audio On Click" : true
+			"Highlight Subtitles in Frame" : true
 		},
 		"Highlight" : {
 			"Syntax" : true

@@ -131,6 +131,8 @@ void Audio(wxTreebook *book, Preferences *parent) {
 	p->OptionAdd(general, _("Snap markers by default"), "Audio/Snap/Enable");
 	p->OptionAdd(general, _("Auto-focus on mouse over"), "Audio/Auto/Focus");
 	p->OptionAdd(general, _("Play audio when stepping in video"), "Audio/Plays When Stepping Video");
+	p->OptionAdd(general, _("Do not stop audio when other line activated"), "Audio/Do Not Stop Audio When Other Line Activated");
+	p->CellSkip(general);
 	p->OptionAdd(general, _("Left-click-drag moves end marker"), "Audio/Drag Timing");
 	p->OptionAdd(general, _("Default timing length (ms)"), "Timing/Default Duration", 0, 36000);
 	p->OptionAdd(general, _("Default lead-in length (ms)"), "Audio/Lead/IN", 0, 36000);
@@ -226,8 +228,6 @@ void Interface(wxTreebook *book, Preferences *parent) {
 	auto grid = p->PageSizer(_("Grid"));
 	p->OptionAdd(grid, _("Focus grid on click"), "Subtitle/Grid/Focus Allow");
 	p->OptionAdd(grid, _("Highlight visible subtitles"), "Subtitle/Grid/Highlight Subtitles in Frame");
-	p->OptionAdd(grid, _("Do not stop audio on click"), "Subtitle/Grid/Do Not Stop Audio On Click");
-	p->CellSkip(grid);
 	p->OptionAdd(grid, _("Hide overrides symbol"), "Subtitle/Grid/Hide Overrides Char");
 	p->OptionFont(grid, "Subtitle/Grid/");
 

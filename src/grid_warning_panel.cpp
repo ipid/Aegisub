@@ -1,5 +1,5 @@
 #include "grid_warning_panel.h"
-#include <wx/generic/statbmpg.h>
+#include <wx/statbmp.h>
 
 /* XPM */
 static const char* const warning_red_16[] = {
@@ -62,8 +62,7 @@ GridWarningPanel::GridWarningPanel(wxWindow* parent)
 
     wxBoxSizer* sizer = new wxBoxSizer(wxHORIZONTAL);
     
-    wxGenericStaticBitmap* icon = new wxGenericStaticBitmap(this, wxID_ANY, wxIcon(warning_red_16));
-    icon->SetScaleMode(wxGenericStaticBitmap::Scale_AspectFit);
+    wxStaticBitmap* icon = new wxStaticBitmap(this, wxID_ANY, wxIcon(warning_red_16));
     icon->SetSizeHints(wxSize(16, 16), wxSize(16, 16));
 
     wxStaticText* warningPrompt = new wxStaticText(this, wxID_ANY, L"警告：");

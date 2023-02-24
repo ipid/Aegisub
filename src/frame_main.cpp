@@ -47,6 +47,7 @@
 #include "command/command.h"
 #include "dialog_detached_video.h"
 #include "dialog_manager.h"
+#include "grid_warning_panel.h"
 #include "libresrc/libresrc.h"
 #include "main.h"
 #include "options.h"
@@ -197,6 +198,9 @@ void FrameMain::InitContents() {
 	StartupLog("Create subtitle editing box");
 	auto EditBox = new SubsEditBox(Panel, context.get());
 
+	StartupLog("Create grid warning panel");
+	GridWarningPanel *gridWarningPanel = new GridWarningPanel(Panel);
+
 	StartupLog("Arrange main sizers");
 	ToolsSizer = new wxBoxSizer(wxVERTICAL);
 	ToolsSizer->Add(audioBox, 0, wxEXPAND);
@@ -205,9 +209,10 @@ void FrameMain::InitContents() {
 	TopSizer->Add(videoBox, 0, wxEXPAND, 0);
 	TopSizer->Add(ToolsSizer, 1, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5);
 	MainSizer = new wxBoxSizer(wxVERTICAL);
-	MainSizer->Add(new wxStaticLine(Panel),0,wxEXPAND | wxALL,0);
-	MainSizer->Add(TopSizer,0,wxEXPAND | wxALL,0);
-	MainSizer->Add(context->subsGrid,1,wxEXPAND | wxALL,0);
+	MainSizer->Add(new wxStaticLine(Panel), 0, wxEXPAND | wxALL, 0);
+	MainSizer->Add(TopSizer, 0, wxEXPAND | wxALL, 0);
+	MainSizer->Add(gridWarningPanel, 0, wxEXPAND | wxALL, 0);
+	MainSizer->Add(context->subsGrid, 1, wxEXPAND | wxALL, 0);
 	Panel->SetSizer(MainSizer);
 
 	StartupLog("Perform layout");

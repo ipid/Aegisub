@@ -96,6 +96,7 @@ aegisub_src = files(
     'gl_text.cpp',
     'gl_wrap.cpp',
     'grid_column.cpp',
+    'grid_warning_controller.cpp',
     'grid_warning_panel.cpp',
     'help_button.cpp',
     'hotkey.cpp',

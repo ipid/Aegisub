@@ -349,6 +349,8 @@ add_executable(Aegisub
     src/gl_wrap.h
     src/grid_column.cpp
     src/grid_column.h
+    src/grid_warning_controller.h
+    src/grid_warning_controller.cpp
     src/grid_warning_panel.cpp
     src/grid_warning_panel.h
     src/help_button.cpp

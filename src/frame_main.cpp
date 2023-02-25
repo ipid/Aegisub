@@ -211,8 +211,9 @@ void FrameMain::InitContents() {
 	MainSizer = new wxBoxSizer(wxVERTICAL);
 	MainSizer->Add(new wxStaticLine(Panel), 0, wxEXPAND | wxALL, 0);
 	MainSizer->Add(TopSizer, 0, wxEXPAND | wxALL, 0);
-	MainSizer->Add(gridWarningPanel, 0, wxEXPAND | wxALL, 0);
+	MainSizer->Add(gridWarningPanel, 0, wxEXPAND | wxLEFT | wxRIGHT | wxBOTTOM, 5);
 	MainSizer->Add(context->subsGrid, 1, wxEXPAND | wxALL, 0);
+	MainSizer->Hide(2); // hide gridWarningPanel
 	Panel->SetSizer(MainSizer);
 
 	StartupLog("Perform layout");

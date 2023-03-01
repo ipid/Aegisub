@@ -29,6 +29,7 @@
 #include "subs_controller.h"
 #include "text_selection_controller.h"
 #include "video_controller.h"
+#include "grid_warning_controller.h"
 
 #include <libaegisub/make_unique.h>
 #include <libaegisub/path.h>
@@ -47,6 +48,7 @@ Context::Context()
 , initialLineState(make_unique<InitialLineState>(this))
 , search(make_unique<SearchReplaceEngine>(this))
 , path(make_unique<Path>(*config::path))
+, gridWarningController(make_unique<GridWarningController>(this))
 , dialog(make_unique<DialogManager>())
 {
 	subsController->SetSelectionController(selectionController.get());

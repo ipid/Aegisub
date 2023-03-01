@@ -34,6 +34,7 @@ class TextSelectionController;
 class VideoController;
 class VideoDisplay;
 class wxWindow;
+class GridWarningController;
 namespace Automation4 { class ScriptManager; }
 
 namespace agi {
@@ -54,6 +55,7 @@ struct Context {
 	std::unique_ptr<InitialLineState> initialLineState;
 	std::unique_ptr<SearchReplaceEngine> search;
 	std::unique_ptr<Path> path;
+	std::unique_ptr<GridWarningController> gridWarningController;
 
 	// Things that should probably be in some sort of UI-context-model
 	wxWindow *parent = nullptr;

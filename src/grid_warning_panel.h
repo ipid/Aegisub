@@ -8,6 +8,7 @@
 class GridWarningPanel : public wxPanel {
 public:
     GridWarningPanel(wxWindow* parent);
+    void UpdateWarningStatus(int collisionCount);
 
 private:
     wxStaticText* mWarningText;

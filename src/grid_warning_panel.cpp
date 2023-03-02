@@ -82,3 +82,7 @@ GridWarningPanel::GridWarningPanel(wxWindow* parent)
 
     SetSizer(sizer);
 }
+
+void GridWarningPanel::UpdateWarningStatus(int collisionCount) {
+    mWarningText->SetLabel(wxString::Format(L"发现 %d 条叠轴。", collisionCount));
+}

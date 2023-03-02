@@ -35,6 +35,7 @@ class AegisubApp;
 class AsyncVideoProvider;
 class AudioBox;
 class VideoBox;
+class GridWarningPanel;
 namespace agi { class AudioProvider; }
 namespace agi { struct Context; class OptionValue; }
 
@@ -67,11 +68,13 @@ class FrameMain : public wxFrame {
 	void OnVideoOpen(AsyncVideoProvider *provider);
 	void OnVideoDetach(agi::OptionValue const& opt);
 	void OnSubtitlesOpen();
+	void OnGridWarningChange(int collisionCount);
 
 	void EnableToolBar(agi::OptionValue const& opt);
 
 	AudioBox *audioBox;      ///< The audio area
 	VideoBox *videoBox;      ///< The video area
+	GridWarningPanel *gridWarningPanel; ///< The grid warning area
 
 	wxSizer *MainSizer;  ///< Arranges things from top to bottom in the window
 	wxSizer *TopSizer;   ///< Arranges video box and tool box from left to right

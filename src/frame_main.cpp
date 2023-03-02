@@ -59,6 +59,7 @@
 #include "video_box.h"
 #include "video_controller.h"
 #include "video_display.h"
+#include "grid_warning_controller.h"
 
 #include <libaegisub/dispatch.h>
 #include <libaegisub/log.h>
@@ -115,6 +116,7 @@ FrameMain::FrameMain()
 	context->subsController->AddFileSaveListener(&FrameMain::UpdateTitle, this);
 	context->project->AddAudioProviderListener(&FrameMain::OnAudioOpen, this);
 	context->project->AddVideoProviderListener(&FrameMain::OnVideoOpen, this);
+	context->gridWarningController->AddGridWarningChangeListener(&FrameMain::OnGridWarningChange, this);
 
 	StartupLog("Initializing context frames");
 	context->parent = this;
@@ -199,7 +201,7 @@ void FrameMain::InitContents() {
 	auto EditBox = new SubsEditBox(Panel, context.get());
 
 	StartupLog("Create grid warning panel");
-	GridWarningPanel *gridWarningPanel = new GridWarningPanel(Panel);
+	gridWarningPanel = new GridWarningPanel(Panel);
 
 	StartupLog("Arrange main sizers");
 	ToolsSizer = new wxBoxSizer(wxVERTICAL);
@@ -347,6 +349,13 @@ void FrameMain::OnAudioOpen(agi::AudioProvider *provider) {
 void FrameMain::OnSubtitlesOpen() {
 	UpdateTitle();
 	SetDisplayMode(1, 1);
+}
+
+void FrameMain::OnGridWarningChange(int collisionCount)
+{
+	gridWarningPanel->UpdateWarningStatus(collisionCount);
+	MainSizer->Show(2, collisionCount > 0);
+	MainSizer->Layout();
 }
 
 void FrameMain::OnKeyDown(wxKeyEvent &event) {
